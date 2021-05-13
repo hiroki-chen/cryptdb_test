@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "typeinfo": "cpp",
+        "algorithm": "cpp",
+        "iosfwd": "cpp"
+    }
+}

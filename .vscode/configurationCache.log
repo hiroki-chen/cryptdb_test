@@ -1,0 +1,1 @@
+{"buildTargets":["build","clean","encrypt","obj/base64.o","obj/client.o","obj/connect.o","obj/cryptohandlers.o","obj/helper.o","obj/monitor.o","obj/sm4.o","path","test"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/chenhaobin/Documents/NKU/Computer/Database'
+mkdir -p obj
+make: Leaving directory `/Users/chenhaobin/Documents/NKU/Computer/Database'
+ 

@@ -1,0 +1,400 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `all'.  Stop.
+ 
+
+# Make data base, printed on Thu May 13 22:59:32 2021
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `Makefile', line 6)
+OBJECT_DIR = obj
+# makefile (from `Makefile', line 18)
+INCLUDES = -I $(MYSQL_CONCPP_DIR)/include -I $(INCLUDE_DIR) -I $(PARSER_DIR) -I $(CRYPTO_DIR) -I $(TEST_DIR)
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile (from `Makefile', line 20)
+LDLIBS = -L $(MYSQL_CONCPP_DIR)/lib64 $(LIBNAMES)
+# makefile
+CURDIR := /Users/chenhaobin/Documents/NKU/Computer/Database
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"de","availableLanguages":{"*":"de"},"_languagePackId":"0446f288c1259581ff1e07fa1b4cf083.de","_translationsConfigFile":"/Users/chenhaobin/Library/Application Support/Code/clp/0446f288c1259581ff1e07fa1b4cf083.de/tcf.json","_cacheRoot":"/Users/chenhaobin/Library/Application Support/Code/clp/0446f288c1259581ff1e07fa1b4cf083.de","_resolvedLanguagePackCoreLocation":"/Users/chenhaobin/Library/Application Support/Code/clp/0446f288c1259581ff1e07fa1b4cf083.de/cfa2e218100323074ac1948c885448fdf4de2a7f","_corruptedFile":"/Users/chenhaobin/Library/Application Support/Code/clp/0446f288c1259581ff1e07fa1b4cf083.de/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_NODE_CACHED_DATA_DIR = /Users/chenhaobin/Library/Application Support/Code/CachedData/cfa2e218100323074ac1948c885448fdf4de2a7f
+# makefile (from `Makefile', line 21)
+CXXFLAGS = -std=c++17 -fPIC -Wno-return-type
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/wr/ljj95nh121l_3gxxr1hjd6yc0000gn/T/vscode-ipc-bc897e36-722a-4f6b-8a2f-56da08e39671.sock
+# environment
+VSCODE_CWD = /
+# environment
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.z2VHazaxrQ/Render
+# environment
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin
+# makefile (from `Makefile', line 3)
+INCLUDE_DIR = $(SOURCE_DIR)/include
+# makefile (from `Makefile', line 5)
+TEST_DIR = test
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.sut1wZkKwd/Listeners
+# automatic
+%F = $(notdir $%)
+# makefile (from `Makefile', line 2)
+SOURCE_DIR = src
+# environment
+VSCODE_PIPE_LOGGING = true
+# makefile (from `Makefile', line 13)
+OUTNAME = $(OBJECT_DIR)/proj
+# environment
+PWD = /Users/chenhaobin/Documents/NKU/Computer/Database
+# makefile (from `Makefile', line 4)
+CRYPTO_DIR = crypto
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# makefile (from `Makefile', line 19)
+LIBNAMES = -lmysqlcppconn
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /Users/chenhaobin
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+LOGNAME = chenhaobin
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 17)
+CC = gcc
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = chenhaobin
+# makefile
+.DEFAULT_GOAL := path
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/wr/ljj95nh121l_3gxxr1hjd6yc0000gn/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/chenhaobin/Library/Application Support/Code/1.56.0-main.sock
+# makefile (from `Makefile', line 1)
+MYSQL_CONCPP_DIR = /usr/local/mysql-connector-c++-8.0.24
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = com.microsoft.VSCode.54024
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# makefile (from `Makefile', line 7)
+PARSER_DIR = parser
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x3
+# default
+MAKEFILES := 
+# makefile (from `Makefile', line 22)
+BUILD = -c $^
+# automatic
+<F = $(notdir $<)
+# makefile (from `Makefile', line 16)
+CXX = clang++
+# makefile (from `Makefile', line 11)
+TEST_FILE = $(wildcard $(TEST_DIR)/*.cc)
+# makefile (from `Makefile', line 12)
+TEST_OBJ = $(patsubst %.o, $(OBJECT_DIR)/%.o, $(notdir $(patsubst %.cc, %.o, $(TEST_FILE))))
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# makefile (from `Makefile', line 9)
+SOURCE_FILE = $(wildcard $(SOURCE_DIR)/*.cc) $(wildcard $(CRYPTO_DIR)/sm4.cc)
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# makefile (from `Makefile', line 10)
+OBJECTS = $(patsubst %.o, $(OBJECT_DIR)/%.o, $(notdir $(patsubst %.cc, %.o, $(SOURCE_FILE))))
+# environment
+LANG = C
+# environment
+VSCODE_PID = 2564
+# variable set hash-table stats:
+# Load=80/1024=8%, Rehash=0, Collisions=1/122=1%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777220, inode 41867070): 17 files, no impossibilities.
+# crypto (device 16777220, inode 42544961): 34 files, no impossibilities so far.
+# src (device 16777220, inode 42454087): 9 files, no impossibilities.
+
+# 60 files, no impossibilities in 3 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+.PHONY: encrypt clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+encrypt: test
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-05-13 22:59:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+test: path obj/base64.o obj/client.o obj/connect.o obj/cryptohandlers.o obj/helper.o obj/monitor.o obj/sm4.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 35):
+	$(CXX) $(INCLUDES) $(CXXFLAGS) -c $(TEST_FILE)
+	mv *.o $(OBJECT_DIR)
+	$(CXX) $(LDLIBS) -o $(OUTNAME) $(TEST_OBJ) $(OBJECTS)
+	$(OBJECT_DIR)/proj
+	
+
+build: path obj/base64.o obj/client.o obj/connect.o obj/cryptohandlers.o obj/helper.o obj/monitor.o obj/sm4.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/base64.o: src/base64.cc src/client.cc src/connect.cc src/cryptohandlers.cc src/helper.cc src/monitor.cc crypto/sm4.cc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 28):
+	@echo %.cc
+	$(CXX) $(INCLUDES) $(CXXFLAGS) $(BUILD)
+	mv *.o $(OBJECT_DIR)
+	
+
+# Not a target:
+src/base64.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/cryptohandlers.o: src/base64.cc src/client.cc src/connect.cc src/cryptohandlers.cc src/helper.cc src/monitor.cc crypto/sm4.cc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+ 
+#  commands to execute (from `Makefile', line 28):
+	@echo %.cc
+	$(CXX) $(INCLUDES) $(CXXFLAGS) $(BUILD)
+	mv *.o $(OBJECT_DIR)
+	
+
+# Not a target:
+src/cryptohandlers.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/helper.o: src/base64.cc src/client.cc src/connect.cc src/cryptohandlers.cc src/helper.cc src/monitor.cc crypto/sm4.cc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 28):
+	@echo %.cc
+	$(CXX) $(INCLUDES) $(CXXFLAGS) $(BUILD)
+	mv *.o $(OBJECT_DIR)
+	
+
+# Not a target:
+crypto/sm4.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/helper.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/sm4.o: src/base64.cc src/client.cc src/connect.cc src/cryptohandlers.cc src/helper.cc src/monitor.cc crypto/sm4.cc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 28):
+	@echo %.cc
+	$(CXX) $(INCLUDES) $(CXXFLAGS) $(BUILD)
+	mv *.o $(OBJECT_DIR)
+	
+
+obj/monitor.o: src/base64.cc src/client.cc src/connect.cc src/cryptohandlers.cc src/helper.cc src/monitor.cc crypto/sm4.cc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 28):
+	@echo %.cc
+	$(CXX) $(INCLUDES) $(CXXFLAGS) $(BUILD)
+	mv *.o $(OBJECT_DIR)
+	
+
+# Not a target:
+src/monitor.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 45):
+	rm -rf $(OBJECT_DIR)
+	
+
+obj/connect.o: src/base64.cc src/client.cc src/connect.cc src/cryptohandlers.cc src/helper.cc src/monitor.cc crypto/sm4.cc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 28):
+	@echo %.cc
+	$(CXX) $(INCLUDES) $(CXXFLAGS) $(BUILD)
+	mv *.o $(OBJECT_DIR)
+	
+
+# Not a target:
+src/connect.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+path:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 25):
+	mkdir -p $(OBJECT_DIR)
+	
+
+obj/client.o: src/base64.cc src/client.cc src/connect.cc src/cryptohandlers.cc src/helper.cc src/monitor.cc crypto/sm4.cc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 28):
+	@echo %.cc
+	$(CXX) $(INCLUDES) $(CXXFLAGS) $(BUILD)
+	mv *.o $(OBJECT_DIR)
+	
+
+# Not a target:
+src/client.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=24/1024=2%, Rehash=0, Collisions=0/105=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Thu May 13 22:59:32 2021
+
+ 
