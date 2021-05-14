@@ -138,12 +138,14 @@ public:
     selectHandler(const std::vector<std::string> &tables,
                   const std::vector<std::string> &columns,
                   const std::string &where,
-                  bool with_view = false) const;
+                  bool with_view = false)
+        const;
 
     virtual bool
     deleteHandler(const std::string &table,
                   const std::string &where,
-                  bool with_transaction = false) const;
+                  bool with_transaction = false)
+        const;
 
     virtual bool
     updateHandler(const std::string &table,
@@ -152,7 +154,8 @@ public:
                   bool with_transaction = false,
                   bool with_procedure = false,
                   const unsigned int &proc_id = 1,
-                  const std::string &values = "") const;
+                  const std::string &values = "")
+        const;
 
     virtual bool
     insertHandler(const std::string &table,
@@ -173,8 +176,10 @@ public:
     /**
      * By default we do not need out argument for stored procedures.
      * 
-     * TODO: support
-     *      CREATE PROCEDURE <name> (IN <arg1> <type1>, OUT <arg2> <type2>) BEGIN <PROCEDURE BODY> END
+     * TODO: support </br>
+     *      CREATE PROCEDURE <name> (IN <arg1> <type1>, OUT <arg2> <type2>) BEGIN <PROCEDURE BODY> END 
+     * 
+     * @note Though I think this is unnecessary to do so.
      */
     virtual bool
     addProcedure(const std::string &name,
@@ -205,12 +210,46 @@ public:
     encryptByDET(const std::string &file_path,
                  const std::string &column_name,
                  const std::vector<double> &parameters,
-                 const unsigned int &limited) const;
+                 const unsigned long &limited,
+                 bool test_select = true)
+        const;
 
     virtual bool
     encryptByOPE(const std::string &file_path,
                  const std::string &column_name,
-                 const unsigned int &limited) const;
+                 const unsigned long &limited)
+        const;
+
+    virtual bool
+    noFrequencyHiding(const std::string &file_path,
+                      const std::string &column_name,
+                      const unsigned long &limited)
+        const;
+
+    virtual bool
+    noEncyption(const std::string &file_path,
+                const std::string &column_name,
+                const unsigned long &limited)
+        const;
+
+    /**
+     * Test the efficiency of SELECT.
+     */
+    virtual bool
+    testSelectEfficieny(const std::string &file_path,
+                        const std::string column_name,
+                        const unsigned long &limited,
+                        const std::pair<double, double> &range,
+                        const unsigned int &k,
+                        const std::map<unsigned int,
+                                       std::vector<std::unique_ptr<Salt>>> &salt_table)
+        const;
+
+    virtual bool
+    testSelectFromPlain(const std::string &file_path,
+                        const std::string column_name,
+                        const unsigned long &limited)
+        const;
 
     ~Client() { connection.get()->close(); }
 

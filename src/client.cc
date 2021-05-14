@@ -321,20 +321,104 @@ bool Client::mysqlDumpTable(const std::string &table, const std::string &secure_
     }
 }
 
+bool Client::testSelectFromPlain(const std::string &file_path,
+                                 const std::string column_name,
+                                 const unsigned long &limited)
+    const
+{
+        std::unique_ptr<rapidcsv::Document>
+        doc(new rapidcsv::Document(file_path, rapidcsv::LabelParams(0, 0)));
+
+    std::vector<std::string>
+        plaintexts = doc.get()->GetColumn<std::string>(column_name);
+
+    assert(limited <= plaintexts.size());
+
+    auto begin = std::chrono::high_resolution_clock::now();
+    for (size_t i = 0; i < limited; i++)
+    {
+        std::string plain = "\'" + plaintexts[i];
+        plain.append("\'");
+        selectHandler({"plain"}, {"plaintext"}, "plaintext = " + plain, false);
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> ms_double = end - begin;
+    double avg = ms_double.count() / plaintexts.size();
+
+    std::stringstream log;
+    log << "SELECT with Plaintext Efficiency (total " << ms_double.count() << " ms, average "
+        << avg << " ms) : " << limited << " plaintexts.\n";
+
+    writeLog(log.str());
+
+    return true;
+}
+
+bool Client::testSelectEfficieny(const std::string &file_path,
+                                 const std::string column_name,
+                                 const unsigned long &limited,
+                                 const std::pair<double, double> &range,
+                                 const unsigned int &k,
+                                 const std::map<unsigned int,
+                                                std::vector<std::unique_ptr<Salt>>> &salt_table)
+    const
+{
+    std::unique_ptr<rapidcsv::Document>
+        doc(new rapidcsv::Document(file_path, rapidcsv::LabelParams(0, 0)));
+
+    std::vector<std::string>
+        plaintexts = doc.get()->GetColumn<std::string>(column_name);
+
+    assert(limited <= plaintexts.size());
+
+    auto begin = std::chrono::high_resolution_clock::now();
+    for (size_t i = 0; i < limited; i++)
+    {
+        const std::string plaintext = plaintexts[i];
+        const unsigned int index = getInterval(std::stod(plaintext), k, range);
+
+        std::vector<std::string> possible_cipher;
+        const std::vector<std::unique_ptr<Salt>> &salts = salt_table.at(index);
+        std::transform(salts.cbegin(), salts.cend(),
+                       std::back_inserter(possible_cipher), [plaintext, this](const std::unique_ptr<Salt> &salt_item) {
+                           std::string cipher = "ciphertext = \'" +
+                                                encrypt_DET(plaintext, salt_item.get()->getSaltName(), this->password);
+                           cipher.append("\'");
+                           return cipher;
+                       });
+
+        const std::string where = string_join(possible_cipher, " OR ").str();
+        selectHandler({"det_test"}, {"ciphertext"}, where, false);
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> ms_double = end - begin;
+    double avg = ms_double.count() / plaintexts.size();
+
+    std::stringstream log;
+    log << "SELECT Efficiency (total " << ms_double.count() << " ms, average "
+        << avg << " ms) : " << limited << " plaintexts.\n";
+
+    writeLog(log.str());
+
+    return testSelectFromPlain(file_path, column_name, limited);
+}
+
 bool Client::encryptByDET(const std::string &file_path,
                           const std::string &column_name,
                           const std::vector<double> &parameters,
-                          const unsigned int &limited)
+                          const unsigned long &limited,
+                          bool test_select)
     const
 {
     execute(DROP_DET_TABLE, false);
     execute(CREATE_DET_TABLE, false);
 
-    std::unique_ptr<rapidcsv::Document> doc(new rapidcsv::Document(file_path, rapidcsv::LabelParams(0, 0)));
+    std::unique_ptr<rapidcsv::Document>
+        doc(new rapidcsv::Document(file_path, rapidcsv::LabelParams(0, 0)));
 
     std::vector<std::string> plaintexts = doc.get()->GetColumn<std::string>(column_name); // Get all the plaintexts from csv file.
 
-    assert(parameters.size() == 5 && limited <= plaintexts.size());
+    assert(parameters.size() == 6 && limited <= plaintexts.size());
 
     // Fetch all the essential paramaters.
     const double alpha = parameters[0];
@@ -373,12 +457,17 @@ bool Client::encryptByDET(const std::string &file_path,
         << ", p = " << p << ", range = [" << range.first << ", " << range.second << "].\n";
     writeLog(log.str());
 
+    if (test_select)
+    {
+        testSelectEfficieny(file_path, column_name, (unsigned)parameters[5], range, k, salt_table);
+    }
+
     return true;
 }
 
 bool Client::encryptByOPE(const std::string &file_path,
                           const std::string &column_name,
-                          const unsigned int &limited)
+                          const unsigned long &limited)
     const
 {
     // std::map<double, unsigned int> local_table = getLocalTable(file_path, column_name);
@@ -386,7 +475,8 @@ bool Client::encryptByOPE(const std::string &file_path,
     execute(CREATE_OPE_TABLE, false);
     std::map<double, unsigned int> local_table;
 
-    std::unique_ptr<rapidcsv::Document> doc(new rapidcsv::Document(file_path, rapidcsv::LabelParams(0, 0)));
+    std::unique_ptr<rapidcsv::Document>
+        doc(new rapidcsv::Document(file_path, rapidcsv::LabelParams(0, 0)));
     // Get the plaintexts.
     std::vector<std::string> plaintexts = doc.get()->GetColumn<std::string>(column_name);
 
@@ -420,6 +510,79 @@ bool Client::encryptByOPE(const std::string &file_path,
     log << "Encrypted OPE (" << ms_double.count() << " ms, on average " << avg << " ms) : "
         << limited << " plaintexts, with client storage " << storage
         << " bytes\n";
+    writeLog(log.str());
+
+    return true;
+}
+
+bool Client::noFrequencyHiding(const std::string &file_path,
+                               const std::string &column_name,
+                               const unsigned long &limited)
+    const
+{
+    execute(DROP_NO_FH_TABLE, false);
+    execute(CREATE_NO_FH_TABLE, false);
+
+    std::unique_ptr<rapidcsv::Document>
+        doc(new rapidcsv::Document(file_path, rapidcsv::LabelParams(0, 0)));
+    // Get the plaintexts.
+    std::vector<std::string> plaintexts = doc.get()->GetColumn<std::string>(column_name);
+
+    assert(limited < plaintexts.size());
+
+    auto begin = std::chrono::high_resolution_clock::now();
+    for (size_t i = 0; i < limited; i++)
+    {
+        const std::string ciphertext = encrypt_DET(plaintexts[i], "", password);
+
+        const std::unique_ptr<sql::PreparedStatement>
+            prep(connection->prepareStatement("INSERT INTO no_fh values(?)"));
+        prep.get()->setString(1, ciphertext);
+        prep.get()->execute();
+
+        //std::cout << "plain: " << plaintexts[i] << ", " << ciphertext << std::endl;
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> ms_double = end - begin;
+    double avg = ms_double.count() / plaintexts.size();
+
+    std::stringstream log;
+    log << "Conventional (" << ms_double.count() << " ms, on average " << avg << " ms) : "
+        << limited << " plaintexts.\n";
+    writeLog(log.str());
+
+    return true;
+}
+
+bool Client::noEncyption(const std::string &file_path,
+                         const std::string &column_name,
+                         const unsigned long &limited)
+    const
+{
+    execute(DROP_PLAIN_TABLE, false);
+    execute(CREATE_PLAIN_TABLE, false);
+
+    std::unique_ptr<rapidcsv::Document> doc(new rapidcsv::Document(file_path, rapidcsv::LabelParams(0, 0)));
+    // Get the plaintexts.
+    std::vector<std::string> plaintexts = doc.get()->GetColumn<std::string>(column_name);
+
+    assert(limited < plaintexts.size());
+
+    auto begin = std::chrono::high_resolution_clock::now();
+    for (size_t i = 0; i < limited; i++)
+    {
+        const std::unique_ptr<sql::PreparedStatement>
+            prep(connection->prepareStatement("INSERT INTO plain values(?)"));
+        prep.get()->setString(1, plaintexts[i]);
+        prep.get()->execute();
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> ms_double = end - begin;
+    double avg = ms_double.count() / plaintexts.size();
+
+    std::stringstream log;
+    log << "Plaintext (" << ms_double.count() << " ms, on average " << avg << " ms) : "
+        << limited << " plaintexts.\n";
     writeLog(log.str());
 
     return true;

@@ -4,6 +4,7 @@
 
 #include "tester.hh"
 #include "helper.hh"
+#include "macro.hh"
 
 /**
  * @note By defualt, be sure that you split every parameters in comma.
@@ -19,7 +20,7 @@ void Tester::start() const
     {
         getline(in, line);
 
-        if (line.empty())
+        if (line.empty() || line[0] == '\'')
         {
             continue;
         }
@@ -28,11 +29,21 @@ void Tester::start() const
 
         const std::string type = params[0];
         const std::string column_name = params[1];
-        const unsigned int limited = std::stoul(params[2]);
+        const unsigned long limited = std::stoul(params[2]);
 
+        std::string split_line = "--------------------" + get_time();
+        split_line.append("---------------------------------------\n");
+
+        client.get()->writeLog(split_line);
         if (0 == type.compare("OPE"))
         {
+            client.get()->noEncyption(csv_file_path, column_name, limited);
             client.get()->encryptByOPE(csv_file_path, column_name, limited);
+            //client.get()->noFrequencyHiding(csv_file_path, column_name, limited);
+
+            /**
+             * TODO: implement other OPE methods like Kerschbaum's OPE as well as mOPE.
+             */
         }
         else if (0 == type.compare("DET"))
         {
@@ -42,9 +53,21 @@ void Tester::start() const
                 return std::stod(param);
             });
 
-            client.get()->encryptByDET(csv_file_path, column_name, parameters, limited);
+            client.get()->noEncyption(csv_file_path, column_name, limited);
+            client.get()->noFrequencyHiding(csv_file_path, column_name, limited);
+            client.get()->encryptByDET(csv_file_path, column_name, parameters, limited, true);
         }
     }
 
     in.close();
+}
+
+Tester::~Tester()
+{
+    /**
+     * Do some clean-ups.
+     */
+    client.get()->directiveHandler(DROP_DET_TABLE);
+    client.get()->directiveHandler(DROP_OPE_TABLE);
+    client.get()->directiveHandler(DROP_NO_FH_TABLE);
 }

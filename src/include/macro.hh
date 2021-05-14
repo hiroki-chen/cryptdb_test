@@ -20,6 +20,12 @@ static const std::string DROP_DET_TABLE = "DROP TABLE IF EXISTS det_test";
 static const std::string CREATE_OPE_TABLE = "CREATE TABLE IF NOT EXISTS ope_test(ciphertext VARCHAR(256), encoding DOUBLE)";
 static const std::string DROP_OPE_TABLE = "DROP TABLE IF EXISTS ope_test";
 
+static const std::string CREATE_NO_FH_TABLE = "CREATE TABLE IF NOT EXISTS no_fh(ciphertext VARCHAR(256))";
+static const std::string DROP_NO_FH_TABLE = "DROP TABLE IF EXISTS no_fh";
+
+static const std::string CREATE_PLAIN_TABLE = "CREATE TABLE IF NOT EXISTS plain(plaintext VARCHAR(256))";
+static const std::string DROP_PLAIN_TABLE = "DROP TABLE IF EXISTS plain";
+
 static const std::string possible_characters = "0123456789";
 
 static const std::map<unsigned int, std::string> proc_map;

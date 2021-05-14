@@ -1,3 +1,50 @@
-Encrypted DET (52.6584 ms, on average 0.000705451 ms) : 100 plaintexts, with parameters alpha = 0.75, interval_num = 5, p = 0.01, range = [0, 100].
-Encrypted DET (526.258 ms, on average 0.00705015 ms) : 1000 plaintexts, with parameters alpha = 0.75, interval_num = 5, p = 0.01, range = [0, 100].
-Encrypted DET (4338.15 ms, on average 0.0581171 ms) : 10000 plaintexts, with parameters alpha = 0.5, interval_num = 4, p = 0.005, range = [0, 100].
+--------------------2021-05-15 00:02:20---------------------------------------
+Plaintext (501.383 ms, on average 0.0067169 ms) : 1000 plaintexts.
+Conventional (484.035 ms, on average 0.00648449 ms) : 1000 plaintexts.
+Encrypted DET (475.35 ms, on average 0.00636814 ms) : 1000 plaintexts, with parameters alpha = 0.75, interval_num = 5, p = 0.01, range = [0, 100].
+SELECT Efficiency (total 117.327 ms, average 0.0015718 ms) : 100 plaintexts.
+SELECT with Plaintext Efficiency (total 87.6961 ms, average 0.00117484 ms) : 100 plaintexts.
+--------------------2021-05-15 00:02:24---------------------------------------
+Plaintext (4498.41 ms, on average 0.060264 ms) : 10000 plaintexts.
+Conventional (4733.03 ms, on average 0.0634073 ms) : 10000 plaintexts.
+Encrypted DET (4597.59 ms, on average 0.0615927 ms) : 10000 plaintexts, with parameters alpha = 0.75, interval_num = 5, p = 0.01, range = [0, 100].
+SELECT Efficiency (total 2994.87 ms, average 0.0401215 ms) : 100 plaintexts.
+SELECT with Plaintext Efficiency (total 431.033 ms, average 0.00577444 ms) : 100 plaintexts.
+--------------------2021-05-15 00:02:43---------------------------------------
+Plaintext (480.267 ms, on average 0.00643402 ms) : 1000 plaintexts.
+Encrypted OPE (6175.04 ms, on average 0.0827254 ms) : 1000 plaintexts, with client storage 612 bytes
+--------------------2021-05-15 00:04:26---------------------------------------
+Plaintext (466.984 ms, on average 0.00625607 ms) : 1000 plaintexts.
+Conventional (471.045 ms, on average 0.00631046 ms) : 1000 plaintexts.
+Encrypted DET (527.069 ms, on average 0.00706101 ms) : 1000 plaintexts, with parameters alpha = 0.75, interval_num = 5, p = 0.01, range = [0, 100].
+SELECT Efficiency (total 159.008 ms, average 0.00213018 ms) : 100 plaintexts.
+SELECT with Plaintext Efficiency (total 101.602 ms, average 0.00136114 ms) : 100 plaintexts.
+--------------------2021-05-15 00:04:31---------------------------------------
+Plaintext (4422.61 ms, on average 0.0592486 ms) : 10000 plaintexts.
+Conventional (5175.3 ms, on average 0.0693322 ms) : 10000 plaintexts.
+Encrypted DET (4468.43 ms, on average 0.0598625 ms) : 10000 plaintexts, with parameters alpha = 0.75, interval_num = 5, p = 0.01, range = [0, 100].
+SELECT Efficiency (total 3191.07 ms, average 0.0427499 ms) : 100 plaintexts.
+SELECT with Plaintext Efficiency (total 478.559 ms, average 0.00641113 ms) : 100 plaintexts.
+--------------------2021-05-15 00:04:51---------------------------------------
+Plaintext (4599.42 ms, on average 0.0616173 ms) : 10000 plaintexts.
+Conventional (4507.28 ms, on average 0.0603829 ms) : 10000 plaintexts.
+Encrypted DET (4265.23 ms, on average 0.0571402 ms) : 10000 plaintexts, with parameters alpha = 0.55, interval_num = 5, p = 0.005, range = [0, 100].
+SELECT Efficiency (total 1824.21 ms, average 0.0244385 ms) : 100 plaintexts.
+SELECT with Plaintext Efficiency (total 502.024 ms, average 0.00672548 ms) : 100 plaintexts.
+--------------------2021-05-15 00:07:00---------------------------------------
+Plaintext (5334.36 ms, on average 0.0714631 ms) : 10000 plaintexts.
+--------------------2021-05-15 00:09:18---------------------------------------
+Plaintext (5344.99 ms, on average 0.0716055 ms) : 10000 plaintexts.
+Encrypted OPE (6246.64 ms, on average 0.0836847 ms) : 10000 plaintexts, with client storage 936 bytes
+--------------------2021-05-15 00:17:25---------------------------------------
+Plaintext (4515.9 ms, on average 0.0604983 ms) : 10000 plaintexts.
+Conventional (4820.48 ms, on average 0.0645788 ms) : 10000 plaintexts.
+Encrypted DET (5539.24 ms, on average 0.0742078 ms) : 10000 plaintexts, with parameters alpha = 0.55, interval_num = 5, p = 0.005, range = [0, 100].
+SELECT Efficiency (total 1915.6 ms, average 0.0256628 ms) : 100 plaintexts.
+SELECT with Plaintext Efficiency (total 447.675 ms, average 0.00599739 ms) : 100 plaintexts.
+--------------------2021-05-15 00:18:36---------------------------------------
+Plaintext (5004.75 ms, on average 0.0670474 ms) : 10000 plaintexts.
+Conventional (4209.86 ms, on average 0.0563984 ms) : 10000 plaintexts.
+Encrypted DET (4139.1 ms, on average 0.0554505 ms) : 10000 plaintexts, with parameters alpha = 0.55, interval_num = 5, p = 0.001, range = [0, 100].
+SELECT Efficiency (total 816.931 ms, average 0.0109442 ms) : 100 plaintexts.
+SELECT with Plaintext Efficiency (total 427.184 ms, average 0.00572287 ms) : 100 plaintexts.

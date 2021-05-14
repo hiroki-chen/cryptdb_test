@@ -1,3 +1,5 @@
-DET, age, 100, 0.75, 0.01, 0, 100, 5
-DET, age, 1000, 0.75, 0.01, 0, 100, 5
-DET, age, 10000, 0.5, 0.005, 0, 100, 4
+' Usage: Specify your test case's type;
+' If you want to say something in the comment, just start with single quotation mark.
+'DET, age, 1000, 0.75, 0.01, 0, 100, 5, 100
+'DET, age, 10000, 0.75, 0.01, 0, 100, 5, 100
+DET, age, 10000, 0.55, 0.001, 0, 100, 5, 100

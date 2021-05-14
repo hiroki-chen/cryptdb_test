@@ -23,6 +23,8 @@ public:
 
     void start() const;
 
+    ~Tester();
+
 private:
     const std::string test_case_path;
     const std::string csv_file_path;
